@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio
+namespace Entidades.POCO
 {
-    public class FachadaDominio
+    public class Avaliacao
     {
-        // operacoes de crud
     }
 }
