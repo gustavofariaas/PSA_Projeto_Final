@@ -12,11 +12,23 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DiasAposPost)
+            @Html.DisplayNameFor(model => model.DescricaoVenda)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DiasAposPost)
+            @Html.DisplayFor(model => model.DescricaoVenda)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Produto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Produto.ProdutoId)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status.StatusId)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.isSold)
         </dt>

@@ -8,13 +8,16 @@ namespace Entidades.Modelos
     public class Venda
     {
         public int VendaID { get; set; }
-        public int DiasAposPost { get; set; }
-        public bool isSold { get; set; }
+        public string DescricaoVenda { get; set; }
+        
+        public virtual ApplicationUser Usuario { get; set; }
 
-        [ForeignKey("ProdutoID")]
         public int ProdutoID { get; set; }
         public virtual Produto Produto { get; set; }
+        public int StatusID { get; set; }
         public virtual Status Status { get; set; }
+
+        public bool isSold { get; set; }
 
     }
 }

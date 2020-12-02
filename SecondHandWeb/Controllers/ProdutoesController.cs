@@ -22,7 +22,8 @@ namespace SecondHandWeb.Controllers
         // GET: Produtoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produtos.ToListAsync());
+            var context = _context.Produtos.Include(p => p.Categoria);
+            return View(await context.ToListAsync());
         }
 
         // GET: Produtoes/Details/5
@@ -34,6 +35,7 @@ namespace SecondHandWeb.Controllers
             }
 
             var produto = await _context.Produtos
+                .Include(p => p.Categoria)
                 .FirstOrDefaultAsync(m => m.ProdutoId == id);
             if (produto == null)
             {
@@ -46,6 +48,7 @@ namespace SecondHandWeb.Controllers
         // GET: Produtoes/Create
         public IActionResult Create()
         {
+            ViewData["CategoriaID"] = new SelectList(_context.Categorias, "CategoriaID", "CategoriaID");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace SecondHandWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdutoId,Nome,Descricao,Preco,Local")] Produto produto)
+        public async Task<IActionResult> Create([Bind("ProdutoId,ProdutoNome,Descricao,Preco,Local,CategoriaID")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace SecondHandWeb.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoriaID"] = new SelectList(_context.Categorias, "CategoriaID", "CategoriaID", produto.CategoriaID);
             return View(produto);
         }
 
@@ -78,6 +82,7 @@ namespace SecondHandWeb.Controllers
             {
                 return NotFound();
             }
+            ViewData["CategoriaID"] = new SelectList(_context.Categorias, "CategoriaID", "CategoriaID", produto.CategoriaID);
             return View(produto);
         }
 
@@ -86,7 +91,7 @@ namespace SecondHandWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProdutoId,Nome,Descricao,Preco,Local")] Produto produto)
+        public async Task<IActionResult> Edit(int id, [Bind("ProdutoId,ProdutoNome,Descricao,Preco,Local,CategoriaID")] Produto produto)
         {
             if (id != produto.ProdutoId)
             {
@@ -113,6 +118,7 @@ namespace SecondHandWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CategoriaID"] = new SelectList(_context.Categorias, "CategoriaID", "CategoriaID", produto.CategoriaID);
             return View(produto);
         }
 
@@ -125,6 +131,7 @@ namespace SecondHandWeb.Controllers
             }
 
             var produto = await _context.Produtos
+                .Include(p => p.Categoria)
                 .FirstOrDefaultAsync(m => m.ProdutoId == id);
             if (produto == null)
             {

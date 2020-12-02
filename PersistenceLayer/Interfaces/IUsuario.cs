@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Persistencia.Interface
 {
-    public interface IUsuario : ICrud<Usuario>
+    public interface IApplicationUser : ICrud<ApplicationUser>
     {
 
     }

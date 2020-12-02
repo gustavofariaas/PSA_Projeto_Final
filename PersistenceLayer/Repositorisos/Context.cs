@@ -8,13 +8,21 @@ namespace PersistenceLayer.Repositorisos
 {
     public class Context : DbContext
     {
+        public Context()
+        {
+        }
+
+        //public Context()
+        //{
+        //}
+
         public Context(DbContextOptions<Context> options)
             : base(options)
         {
         }
 
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<ApplicationUser> Usuarios { get; set; }
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Status> Status { get; set; }
@@ -30,7 +38,7 @@ namespace PersistenceLayer.Repositorisos
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
- 
+
             base.OnModelCreating(builder);
         }
 

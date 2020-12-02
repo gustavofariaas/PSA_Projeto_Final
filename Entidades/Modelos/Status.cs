@@ -7,9 +7,10 @@ namespace Entidades.Modelos
 {
     public class Status
     {
-        [Key]
+        
         public int StatusId { get; set; }
         public string StatusNome { get; set; }
+        
         
 
     }

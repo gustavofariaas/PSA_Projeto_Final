@@ -24,7 +24,7 @@ namespace PersistenceLayer.Entidades
         {
             using (var data = new Context(_optionsbuilder))
             {
-                return data.Produtos.Where(t=>t.Nome == "Playstation 4").Count();
+                return data.Produtos.Where(t=>t.ProdutoNome == "Playstation 4").Count();
             }
         }
     }

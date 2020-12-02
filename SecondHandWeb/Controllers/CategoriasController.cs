@@ -54,7 +54,7 @@ namespace SecondHandWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoriaID,Nome")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("CategoriaID,CategoriaNome")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SecondHandWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoriaID,Nome")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoriaID,CategoriaNome")] Categoria categoria)
         {
             if (id != categoria.CategoriaID)
             {

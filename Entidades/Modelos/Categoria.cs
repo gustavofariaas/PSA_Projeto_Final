@@ -9,8 +9,7 @@ namespace Entidades.Modelos
     {
         [Key]
         public int CategoriaID { get; set; }
-        public string Nome { get; set; }
-        public virtual ICollection<Categoria> Categorias { get; set; }
+        public string CategoriaNome { get; set; }
 
     }
 }
